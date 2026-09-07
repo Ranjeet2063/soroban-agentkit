@@ -99,9 +99,123 @@ npm install
 # Build TypeScript
 npm run build
 
+# Run type checks
+npm run typecheck
+
 # Run unit tests
 npm test
 ```
+
+### Interactive CLI
+
+Soroban AgentKit includes an interactive terminal example for testing common agent actions on Stellar Testnet.
+
+The CLI supports:
+
+- Checking the account's XLM and asset balances
+- Transferring XLM to another Stellar address
+- Simulating a Soroban smart contract call
+- Graceful handling of missing credentials and failed operations
+
+#### Setup
+
+Create and fund a Stellar Testnet account, then set its secret key as the `STELLAR_SECRET_KEY` environment variable.
+
+**PowerShell:**
+
+```powershell
+$env:STELLAR_SECRET_KEY = "SXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+
+**Linux/macOS:**
+
+```bash
+export STELLAR_SECRET_KEY="SXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+
+> **Security:** Never commit your secret key to the repository or share it publicly.
+
+Build the project before running the CLI:
+
+```bash
+npm run build
+```
+
+Start the interactive CLI:
+
+```bash
+node examples/interactive_cli.js
+```
+
+The CLI provides four options:
+
+```text
+1. Check balance
+2. Transfer XLM
+3. Simulate contract call
+4. Exit
+```
+
+#### Check Balance
+
+Select `1` to retrieve the current balances of the configured Testnet account.
+
+#### Transfer XLM
+
+Select `2` and provide the recipient Stellar address and amount. The CLI asks for confirmation before submitting the transaction.
+
+Example:
+
+```text
+Select an option: 2
+
+Recipient Stellar address: G...
+Amount of XLM: 1
+
+Send 1 XLM to G...? (y/N): y
+
+Submitting XLM transfer...
+
+Transfer successful!
+Transaction hash: ...
+```
+
+#### Simulate a Soroban Contract Call
+
+Select `3` and provide:
+
+1. The deployed Soroban contract ID
+2. The contract method
+3. Arguments as a JSON array
+
+For example:
+
+```text
+Select an option: 3
+
+Contract ID: C...
+Contract method: hello
+Arguments as JSON array (press Enter for none): ["OpenSource"]
+
+Simulating contract call...
+
+Simulation completed.
+```
+
+The contract must be deployed on the configured Stellar Testnet, and the supplied method and arguments must match the contract interface.
+
+The CLI uses simulation mode for this option, so it does not submit a signed transaction.
+
+#### Error Handling
+
+If `STELLAR_SECRET_KEY` is missing, the CLI exits with a clear error message:
+
+```text
+Missing STELLAR_SECRET_KEY environment variable.
+Set your Stellar testnet secret key before running this example.
+```
+
+Transaction and contract errors are also caught and displayed without exposing the configured secret key.
 
 ---
 
