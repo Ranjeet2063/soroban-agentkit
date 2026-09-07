@@ -1,0 +1,41 @@
+{
+  "name": "soroban-agentkit",
+  "version": "0.1.0",
+  "description": "Production-grade AI Agent toolkit and SDK for Stellar blockchain and Soroban smart contracts.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test tests/*.test.js",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "ai-agents",
+    "agentkit",
+    "smart-contracts",
+    "langchain",
+    "elizaos",
+    "web3"
+  ],
+  "author": "Ranjeet kumar sah <https://github.com/Ranjeet2063>",
+  "license": "MIT",
+  "homepage": "https://github.com/Ranjeet2063/soroban-agentkit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ranjeet2063/soroban-agentkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ranjeet2063/soroban-agentkit/issues"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
