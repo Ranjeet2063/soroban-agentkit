@@ -11,6 +11,28 @@ Empower your LLMs to query balances, transfer native XLM or SAC tokens, simulate
 
 ---
 
+## 🏛️ System Architecture
+
+```mermaid
+graph TD
+    User([User Prompt / Autonomous Goal]) --> AgentRuntime[AI Agent: ElizaOS / LangChain / OpenAI]
+    AgentRuntime -->|Structured Tool Call| AgentKit[🦀 Soroban AgentKit SDK]
+    
+    subgraph "Soroban AgentKit Core"
+        AgentKit --> ToolRegistry[Tool Registry: Balance, Transfer, Contract Call]
+        AgentKit --> Signer[🔐 Secure Ed25519 Keypair Signer]
+        AgentKit --> XDRSerializer[XDR Type Parser & Soroban Serializer]
+    end
+    
+    Signer --> RPCClient[Stellar Horizon & Soroban RPC]
+    XDRSerializer --> RPCClient
+    
+    RPCClient --> SorobanHost[📜 Soroban Smart Contracts WASM]
+    RPCClient --> StellarLedger[⛓️ Stellar Ledger Settlement XLM / USDC]
+```
+
+---
+
 ## 🌟 Key Features
 
 - ⚡ **Lightweight & Modular**: Zero unnecessary bloat. Pure TypeScript with first-class `@stellar/stellar-sdk` support.
@@ -105,6 +127,17 @@ npm test
 
 ---
 
+## 💼 Author, Commercial Consulting & Hiring
+
+Need to integrate autonomous AI agents into your Web3 protocol, build custom Soroban tool plugins, or audit your smart contracts?
+
+- **Author & Architect**: [Ranjeet Kumar Gupta](https://github.com/Ranjeet2063) (Full-Stack Web3 & Soroban Engineer)
+- 💬 **Telegram**: [@guptakumarranjeet](https://t.me/guptakumarranjeet)
+- 📧 **Direct Email**: [guptakumarranjeet150@gmail.com](mailto:guptakumarranjeet150@gmail.com)
+- 🚀 Available for **Full-Time Remote Roles, Protocol Architecture & High-Impact Consulting Contracts**.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are warmly welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details on submitting pull requests and reporting issues.
@@ -114,3 +147,4 @@ Contributions are warmly welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md
 ## 📄 License
 
 This project is licensed under the [MIT License](./LICENSE).
+
