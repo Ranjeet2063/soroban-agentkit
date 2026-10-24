@@ -1,6 +1,7 @@
 # 🦀 Soroban AgentKit
 
 [![CI](https://github.com/Ranjeet2063/soroban-agentkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Ranjeet2063/soroban-agentkit/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Ranjeet2063/soroban-agentkit?color=blue)](https://github.com/Ranjeet2063/soroban-agentkit/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-v20%2B%20%7C%20v22%2B-brightgreen)](https://nodejs.org)
 [![Stellar](https://img.shields.io/badge/Stellar-Soroban-blue)](https://stellar.org)
@@ -95,6 +96,17 @@ const agent = new SorobanAgentKit({ secretKey: process.env.STELLAR_SECRET_KEY! }
 const langchainTools = toLangChainTools(agent.getTools());
 ```
 
+### 4. Use with ElizaOS Agent Runtime
+
+```typescript
+import { SorobanAgentKit, createElizaPlugin } from 'soroban-agentkit';
+
+const agent = new SorobanAgentKit({ secretKey: process.env.STELLAR_SECRET_KEY! });
+const elizaPlugin = createElizaPlugin(agent);
+
+// Pass elizaPlugin directly to your ElizaOS Agent runtime plugins array
+```
+
 ---
 
 ## 🛠️ Built-in Agent Tools
@@ -105,6 +117,7 @@ const langchainTools = toLangChainTools(agent.getTools());
 | `stellar_transfer_token` | Sends native XLM or assets to a recipient with an optional memo. |
 | `stellar_get_account_info` | Retrieves account sequence, thresholds, subentry count, and active signers. |
 | `soroban_call_contract` | Simulates and executes smart contract function calls with arguments. |
+| `soroban_sep41_token` | Standard SEP-0041 token operations: `balance`, `transfer`, `allowance`, and `approve`. |
 
 ---
 
