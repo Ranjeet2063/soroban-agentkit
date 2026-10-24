@@ -4,6 +4,7 @@ import { createGetBalanceTool } from './tools/get_balance.js';
 import { createTransferTokenTool } from './tools/transfer_token.js';
 import { createGetAccountInfoTool } from './tools/get_account_info.js';
 import { createCallContractTool } from './tools/call_contract.js';
+import { createSep41TokenTool } from './tools/sep41_token.js';
 
 export interface AccountBalanceInfo {
   asset: string;
@@ -202,7 +203,8 @@ export class SorobanAgentKit {
       createGetBalanceTool(this),
       createTransferTokenTool(this),
       createGetAccountInfoTool(this),
-      createCallContractTool(this)
+      createCallContractTool(this),
+      createSep41TokenTool(this)
     ];
   }
 }
