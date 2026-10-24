@@ -95,6 +95,26 @@ const agent = new SorobanAgentKit({ secretKey: process.env.STELLAR_SECRET_KEY! }
 const langchainTools = toLangChainTools(agent.getTools());
 ```
 
+### 4. Use with ElizaOS Plugins
+
+```typescript
+import { SorobanAgentKit, toElizaPlugin } from 'soroban-agentkit';
+
+const agent = new SorobanAgentKit({ secretKey: process.env.STELLAR_SECRET_KEY! });
+const elizaPlugin = toElizaPlugin(agent);
+
+// Register plugin with your ElizaOS runtime
+// runtime.registerPlugin(elizaPlugin);
+```
+
+### 5. Interactive Terminal CLI Demo
+
+Run the interactive terminal CLI to test agent actions directly:
+
+```bash
+node examples/interactive_cli.js
+```
+
 ---
 
 ## 🛠️ Built-in Agent Tools
@@ -105,6 +125,7 @@ const langchainTools = toLangChainTools(agent.getTools());
 | `stellar_transfer_token` | Sends native XLM or assets to a recipient with an optional memo. |
 | `stellar_get_account_info` | Retrieves account sequence, thresholds, subentry count, and active signers. |
 | `soroban_call_contract` | Simulates and executes smart contract function calls with arguments. |
+| `soroban_sep41_token` | Interacts with Soroban SEP-0041 Token contracts (balance, transfer, allowance, approve). |
 
 ---
 
