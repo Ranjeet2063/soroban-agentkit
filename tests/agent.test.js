@@ -30,13 +30,14 @@ describe('SorobanAgentKit Test Suite', () => {
   test('should return standard agent tools list', () => {
     const kit = new SorobanAgentKit({ secretKey: secret });
     const tools = kit.getTools();
-    assert.strictEqual(tools.length, 4);
+    assert.strictEqual(tools.length, 5);
 
     const names = tools.map(t => t.name);
     assert.ok(names.includes('stellar_get_balance'));
     assert.ok(names.includes('stellar_transfer_token'));
     assert.ok(names.includes('stellar_get_account_info'));
     assert.ok(names.includes('soroban_call_contract'));
+    assert.ok(names.includes('soroban_sep41_token'));
   });
 
   test('should convert tools to OpenAI function calling format', () => {
@@ -44,7 +45,7 @@ describe('SorobanAgentKit Test Suite', () => {
     const tools = kit.getTools();
     const openaiTools = toOpenAITools(tools);
 
-    assert.strictEqual(openaiTools.length, 4);
+    assert.strictEqual(openaiTools.length, 5);
     assert.strictEqual(openaiTools[0].type, 'function');
     assert.ok(openaiTools[0].function.name);
     assert.ok(openaiTools[0].function.description);
@@ -56,7 +57,7 @@ describe('SorobanAgentKit Test Suite', () => {
     const tools = kit.getTools();
     const lcTools = toLangChainTools(tools);
 
-    assert.strictEqual(lcTools.length, 4);
+    assert.strictEqual(lcTools.length, 5);
     assert.ok(typeof lcTools[0].func === 'function');
     assert.ok(lcTools[0].name);
   });
