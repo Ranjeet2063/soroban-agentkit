@@ -121,6 +121,27 @@ const elizaPlugin = createElizaPlugin(agent);
 
 ---
 
+## 💻 Interactive Terminal CLI Demo
+
+Test agent capabilities, inspect schemas, and interact with the Stellar network interactively without writing boilerplate:
+
+```bash
+# Optional: Set your Stellar secret key (or let the CLI generate a testnet keypair)
+export STELLAR_SECRET_KEY="S..."
+export STELLAR_NETWORK="testnet" # 'testnet' | 'mainnet' | 'standalone'
+
+# Launch interactive CLI demo
+node examples/interactive_cli.js
+```
+
+The interactive demo guides you through:
+1. **Querying Balances**: Fetch live testnet balances for any public address.
+2. **Transferring Assets**: Send native XLM to destination accounts.
+3. **Soroban Contract Simulation**: Dry-run invocation of smart contract entrypoints.
+4. **Tool & Schema Inspection**: Review registered tools and dynamic OpenAI function calling schemas.
+
+---
+
 ## 🧪 Development & Testing
 
 ```bash
