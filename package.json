@@ -32,7 +32,7 @@
     "url": "https://github.com/Ranjeet2063/soroban-agentkit/issues"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^13.0.0"
+    "@stellar/stellar-sdk": "^17.3.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
